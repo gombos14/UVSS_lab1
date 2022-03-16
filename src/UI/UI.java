@@ -20,7 +20,7 @@ public class UI {
      * @throws Exception - wenn etwas schief gegangen ist
      */
     public static void createLoginForm(Stage stage) throws Exception{
-        Parent root = FXMLLoader.load(UI.class.getResource("F:\\Krisztian\\uvss\\lab1\\src\\FXMLFiles\\login.fxml"));
+        Parent root = FXMLLoader.load(UI.class.getResource("../FXMLFiles/login.fxml"));
         //Titel des Anmeldefeldes setieren
         stage.setTitle("Login");
         //Scene von root sichtbar machen mit setScene
@@ -38,7 +38,7 @@ public class UI {
      * @throws Exception - wenn etwas schief gegangen ist
      */
     public static void createQuiz(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(UI.class.getResource("F:\\Krisztian\\uvss\\lab1\\src\\FXMLFiles\\sample.fxml"));
+        Parent root = FXMLLoader.load(UI.class.getResource("../FXMLFiles/sample.fxml"));
         root.getStylesheets().add("/stylesheets/application.css");
         stage.setTitle("Quiz");
         stage.setScene(new Scene(root));
@@ -54,7 +54,7 @@ public class UI {
      * @throws Exception - wenn etwas schief gegangen ist
      */
     public static void createResults(Stage stage, int correct, int wrong, int unans, String time) throws Exception {
-        Parent root = FXMLLoader.load(UI.class.getResource("F:\\Krisztian\\uvss\\lab1\\src\\FXMLFiles\\results.fxml"));
+        Parent root = FXMLLoader.load(UI.class.getResource("../FXMLFiles/results.fxml"));
         stage.setTitle("Quiz");
         stage.setScene(new Scene(root));
         stage.getIcons().add(new Image(UI.class.getResourceAsStream("/images/logo.png")));

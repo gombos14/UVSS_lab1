@@ -45,7 +45,7 @@ public class Controller implements Initializable{
     private GridPane bottom;
 
     private final FragenRepository repo = new FragenRepository();
-    private Model.Fragebogen f;
+    private Fragebogen f;
     private static int nr = 0 , id = 0;
     private int questionNo = 0;
     private int answersNo = 0;
@@ -54,7 +54,7 @@ public class Controller implements Initializable{
     private Timeline timer;
 
     /**
-     * Initialisierung der Main.App/Anwendung
+     * Initialisierung der App/Anwendung
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

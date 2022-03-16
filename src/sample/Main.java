@@ -1,8 +1,8 @@
 package sample;
 
-import UI.UI;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import UI.*;
 
 public class Main extends Application {
 
