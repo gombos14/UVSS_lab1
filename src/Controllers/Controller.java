@@ -99,7 +99,10 @@ public class Controller implements Initializable{
      * @return - eine sortierte Liste mit 26 Zahlen aus den Intervall [min,max] = [1,40]
      */
     public static List<Integer> generateRandomNumbers(int min, int max) {
-        List<Integer> l = new ArrayList<Integer>();
+        if(min < 1 || max > 40 || max - min + 1 < 26) {
+            return new ArrayList<>();
+        }
+        List<Integer> l = new ArrayList<>();
         Random rand = new Random();
         for(int i = 0; i < 26; i++) {
             int questionNum =  rand.nextInt(max - min + 1) + min;
