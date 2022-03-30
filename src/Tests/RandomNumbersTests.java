@@ -49,6 +49,28 @@ class RandomNumbersTests {
     // BVA
     @Test
     void generateRandomNumbersBVA() {
+        // NON-VALID
+        // EC1 - Lower interval boundary is less than the boundary value
+        assertEquals(0, generateRandomNumbers(0, 40).size());
 
+        // VALID
+        // EC2 - Lower interval boundary is equal to the boundary value
+        assertEquals(26, generateRandomNumbers(1, 40).size());
+
+        // VALID
+        // EC3 - Lower interval boundary is greater than the boundary value
+        assertEquals(26, generateRandomNumbers(2, 40).size());
+
+        // VALID
+        // EC4 - Upper interval boundary is less than the boundary value
+        assertEquals(26, generateRandomNumbers(1, 39).size());
+
+        // VALID
+        // EC5 - Upper interval boundary is equal to the boundary value
+        assertEquals(26, generateRandomNumbers(1, 40).size());
+
+        // NON-VALID
+        // EC6 - Upper interval boundary is greater than the boundary value
+        assertEquals(0, generateRandomNumbers(1, 41).size());
     }
 }
