@@ -107,22 +107,16 @@ public class Controller implements Initializable{
 
 
     public static List<Integer> generateRandomNumbers(int ct, int min, int max) {
-        boolean ok = true;
-        if(min > max) {
-            ok = false;
-        }  else if(max - min + 1 < ct) {
-            ok = false;
-        }
-        if(!ok) {
-            return new ArrayList<>();
-        }
         List<Integer> l = new ArrayList<>();
+        if(min > max || max - min + 1 < ct)
+            return l;
+
         Random rand = new Random();
+        int bound = max - min + 1;
         for(int i = 0; i < ct; i++) {
-            int questionNum =  rand.nextInt(max - min + 1) + min;
-            while(l.contains(questionNum)) {
-                questionNum = rand.nextInt(max - min + 1) + min;
-            }
+            int questionNum =  rand.nextInt(bound) + min;
+            while(l.contains(questionNum))
+                questionNum = rand.nextInt(bound) + min;
             l.add(questionNum);
         }
         Collections.sort(l);
@@ -206,6 +200,31 @@ public class Controller implements Initializable{
         } else {
             this.imageLabel.setGraphic(null);
         }
+    }
+
+    /**
+        Merges two sorted arrays with the same length in one single array.
+        arr1 - first array
+        arr2 - second array
+        n - length of arrays
+        Returns the sorted
+     */
+    public static int[] mergeArrays(int[] arr1, int[] arr2, int n)
+    {
+        int i = 0, j = 0, k = 0;
+        int[] arr3 = new int[2 * n];
+        while (i < n && j < n) {
+            if (arr1[i] < arr2[j])
+                arr3[k] = arr1[i++];
+            else
+                arr3[k] = arr2[j++];
+            k++;
+        }
+        while (i < n)
+            arr3[k++] = arr1[i++];
+        while (j < n)
+            arr3[k++] = arr2[j++];
+        return arr3;
     }
 
     /**
