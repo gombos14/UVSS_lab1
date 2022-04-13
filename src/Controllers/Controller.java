@@ -98,13 +98,27 @@ public class Controller implements Initializable{
      * @param max - OberKante des Intervalls - totale Anzahl von Fragen (40)
      * @return - eine sortierte Liste mit 26 Zahlen aus den Intervall [min,max] = [1,40]
      */
-    public static List<Integer> generateRandomNumbers(int min, int max) {
+    public static List<Integer> generateRandomQuestions(int min, int max) {
         if(min < 1 || max > 40 || max - min + 1 < 26) {
+            return new ArrayList<>();
+        }
+        return generateRandomNumbers(26, min, max);
+    }
+
+
+    public static List<Integer> generateRandomNumbers(int ct, int min, int max) {
+        boolean ok = true;
+        if(min > max) {
+            ok = false;
+        }  else if(max - min + 1 < ct) {
+            ok = false;
+        }
+        if(!ok) {
             return new ArrayList<>();
         }
         List<Integer> l = new ArrayList<>();
         Random rand = new Random();
-        for(int i = 0; i < 26; i++) {
+        for(int i = 0; i < ct; i++) {
             int questionNum =  rand.nextInt(max - min + 1) + min;
             while(l.contains(questionNum)) {
                 questionNum = rand.nextInt(max - min + 1) + min;
@@ -122,7 +136,7 @@ public class Controller implements Initializable{
      * @return - einen Fragebogen mit 26 zufalligen Fragen
      */
     public Fragebogen generateFragebogen(int id, int nummer) {
-        List<Integer> l = generateRandomNumbers(1, 40);
+        List<Integer> l = generateRandomQuestions(1, 40);
         Fragebogen f = new Fragebogen(id, nummer);
         for(int x: l) {
             f.getFrage().add(this.repo.getList().get(x - 1));

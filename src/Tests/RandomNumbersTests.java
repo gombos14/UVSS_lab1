@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static Controllers.Controller.generateRandomQuestions;
 import static org.junit.jupiter.api.Assertions.*;
-import static Controllers.Controller.generateRandomNumbers;
 
 /**
  * Die Funktion "generateRandomNumbers" erstellt eine Liste mit 26 zufällige ganze Zahlen aus einem gegebenen Intervall.
@@ -21,7 +21,7 @@ class RandomNumbersTests {
 
     @BeforeEach
     void init() {
-        this.list1  = generateRandomNumbers(1, 40);
+        this.list1  = generateRandomQuestions(1, 40);
     }
 
     // ECP
@@ -40,10 +40,10 @@ class RandomNumbersTests {
 
         // NON-VALID
         // EC4 - Interval boundaries outside the interval [1, 40]
-        assertEquals(0, generateRandomNumbers(-10, 55).size());
+        assertEquals(0, generateRandomQuestions(-10, 55).size());
 
         // EC5 - Interval length is lower than 26
-        assertEquals(0, generateRandomNumbers(5, 10).size());
+        assertEquals(0, generateRandomQuestions(5, 10).size());
     }
 
     // BVA
@@ -51,26 +51,26 @@ class RandomNumbersTests {
     void generateRandomNumbersBVA() {
         // NON-VALID
         // EC1 - Lower interval boundary is less than the boundary value
-        assertEquals(0, generateRandomNumbers(0, 40).size());
+        assertEquals(0, generateRandomQuestions(0, 40).size());
 
         // VALID
         // EC2 - Lower interval boundary is equal to the boundary value
-        assertEquals(26, generateRandomNumbers(1, 40).size());
+        assertEquals(26, generateRandomQuestions(1, 40).size());
 
         // VALID
         // EC3 - Lower interval boundary is greater than the boundary value
-        assertEquals(26, generateRandomNumbers(2, 40).size());
+        assertEquals(26, generateRandomQuestions(2, 40).size());
 
         // VALID
         // EC4 - Upper interval boundary is less than the boundary value
-        assertEquals(26, generateRandomNumbers(1, 39).size());
+        assertEquals(26, generateRandomQuestions(1, 39).size());
 
         // VALID
         // EC5 - Upper interval boundary is equal to the boundary value
-        assertEquals(26, generateRandomNumbers(1, 40).size());
+        assertEquals(26, generateRandomQuestions(1, 40).size());
 
         // NON-VALID
         // EC6 - Upper interval boundary is greater than the boundary value
-        assertEquals(0, generateRandomNumbers(1, 41).size());
+        assertEquals(0, generateRandomQuestions(1, 41).size());
     }
 }
