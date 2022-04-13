@@ -1,0 +1,181 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RandomNumbersTests</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">Tests</a>
+</div>
+
+<h1>Coverage Summary for Class: RandomNumbersTests (Tests)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RandomNumbersTests</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package Tests;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import org.junit.jupiter.api.BeforeEach;
+<i class="no-highlight">4</i>&nbsp;import org.junit.jupiter.api.Test;
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;import java.util.HashSet;
+<i class="no-highlight">7</i>&nbsp;import java.util.List;
+<i class="no-highlight">8</i>&nbsp;import java.util.Set;
+<i class="no-highlight">9</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;import static Controllers.Controller.generateRandomQuestions;
+<i class="no-highlight">11</i>&nbsp;import static org.junit.jupiter.api.Assertions.*;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;/**
+<i class="no-highlight">14</i>&nbsp; * Die Funktion &quot;generateRandomNumbers&quot; erstellt eine Liste mit 26 zufällige ganze Zahlen aus einem gegebenen Intervall.
+<i class="no-highlight">15</i>&nbsp; * min - Unterkante des Intervalls &gt;=  1
+<i class="no-highlight">16</i>&nbsp; * max - Oberkante des Intervalls &lt;= 40
+<i class="no-highlight">17</i>&nbsp; * Gibt eine sortierte Liste mit 26 verschiedenen Zahlen aus dem Intervall [min,max] zurück.
+<i class="no-highlight">18</i>&nbsp; */
+<b class="fc"><i class="no-highlight">19</i>&nbsp;class RandomNumbersTests {</b>
+<i class="no-highlight">20</i>&nbsp;    List&lt;Integer&gt; list1;
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    @BeforeEach
+<i class="no-highlight">23</i>&nbsp;    void init() {
+<b class="fc"><i class="no-highlight">24</i>&nbsp;        this.list1  = generateRandomQuestions(1, 40);</b>
+<i class="no-highlight">25</i>&nbsp;    }
+<i class="no-highlight">26</i>&nbsp;
+<i class="no-highlight">27</i>&nbsp;    // ECP
+<i class="no-highlight">28</i>&nbsp;    @Test
+<i class="no-highlight">29</i>&nbsp;    void generateRandomNumbersECP() {
+<i class="no-highlight">30</i>&nbsp;        // VALID
+<i class="no-highlight">31</i>&nbsp;        // EC1 - Intervals margins 1 and 40 should return an unempty list
+<b class="fc"><i class="no-highlight">32</i>&nbsp;        assertNotEquals(0, list1.size());</b>
+<i class="no-highlight">33</i>&nbsp;
+<i class="no-highlight">34</i>&nbsp;        // EC2 - Returned list contains only different values
+<b class="fc"><i class="no-highlight">35</i>&nbsp;        Set&lt;Integer&gt; list2 = new HashSet&lt;&gt;(list1);</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;        assertEquals(list1.size(), list2.size());</b>
+<i class="no-highlight">37</i>&nbsp;
+<i class="no-highlight">38</i>&nbsp;        // EC3 - Returned list contains exactly 26 different values
+<b class="fc"><i class="no-highlight">39</i>&nbsp;        assertEquals(26, list1.size());</b>
+<i class="no-highlight">40</i>&nbsp;
+<i class="no-highlight">41</i>&nbsp;        // NON-VALID
+<i class="no-highlight">42</i>&nbsp;        // EC4 - Interval boundaries outside the interval [1, 40]
+<b class="fc"><i class="no-highlight">43</i>&nbsp;        assertEquals(0, generateRandomQuestions(-10, 55).size());</b>
+<i class="no-highlight">44</i>&nbsp;
+<i class="no-highlight">45</i>&nbsp;        // EC5 - Interval length is lower than 26
+<b class="fc"><i class="no-highlight">46</i>&nbsp;        assertEquals(0, generateRandomQuestions(5, 10).size());</b>
+<i class="no-highlight">47</i>&nbsp;    }
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;    // BVA
+<i class="no-highlight">50</i>&nbsp;    @Test
+<i class="no-highlight">51</i>&nbsp;    void generateRandomNumbersBVA() {
+<i class="no-highlight">52</i>&nbsp;        // NON-VALID
+<i class="no-highlight">53</i>&nbsp;        // EC1 - Lower interval boundary is less than the boundary value
+<b class="fc"><i class="no-highlight">54</i>&nbsp;        assertEquals(0, generateRandomQuestions(0, 40).size());</b>
+<i class="no-highlight">55</i>&nbsp;
+<i class="no-highlight">56</i>&nbsp;        // VALID
+<i class="no-highlight">57</i>&nbsp;        // EC2 - Lower interval boundary is equal to the boundary value
+<b class="fc"><i class="no-highlight">58</i>&nbsp;        assertEquals(26, generateRandomQuestions(1, 40).size());</b>
+<i class="no-highlight">59</i>&nbsp;
+<i class="no-highlight">60</i>&nbsp;        // VALID
+<i class="no-highlight">61</i>&nbsp;        // EC3 - Lower interval boundary is greater than the boundary value
+<b class="fc"><i class="no-highlight">62</i>&nbsp;        assertEquals(26, generateRandomQuestions(2, 40).size());</b>
+<i class="no-highlight">63</i>&nbsp;
+<i class="no-highlight">64</i>&nbsp;        // VALID
+<i class="no-highlight">65</i>&nbsp;        // EC4 - Upper interval boundary is less than the boundary value
+<b class="fc"><i class="no-highlight">66</i>&nbsp;        assertEquals(26, generateRandomQuestions(1, 39).size());</b>
+<i class="no-highlight">67</i>&nbsp;
+<i class="no-highlight">68</i>&nbsp;        // VALID
+<i class="no-highlight">69</i>&nbsp;        // EC5 - Upper interval boundary is equal to the boundary value
+<b class="fc"><i class="no-highlight">70</i>&nbsp;        assertEquals(26, generateRandomQuestions(1, 40).size());</b>
+<i class="no-highlight">71</i>&nbsp;
+<i class="no-highlight">72</i>&nbsp;        // NON-VALID
+<i class="no-highlight">73</i>&nbsp;        // EC6 - Upper interval boundary is greater than the boundary value
+<b class="fc"><i class="no-highlight">74</i>&nbsp;        assertEquals(0, generateRandomQuestions(1, 41).size());</b>
+<i class="no-highlight">75</i>&nbsp;    }
+<i class="no-highlight">76</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-04-13 23:32</div>
+</div>
+</body>
+</html>
