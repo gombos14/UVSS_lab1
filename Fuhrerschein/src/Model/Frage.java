@@ -20,11 +20,6 @@ public class Frage {
         this.answers = new ArrayList<Pair<String, Integer>>();
     }
 
-    /* Getters und Setters */
-    public int getNumber() {
-        return number;
-    }
-
     public void setNumber(int number) {
         this.number = number;
     }
@@ -39,10 +34,6 @@ public class Frage {
 
     public List<Pair<String, Integer>> getAnswers() {
         return this.answers;
-    }
-
-    public void setAnswers(List<Pair<String, Integer>> answers) {
-        this.answers = answers;
     }
 
     public String getImageLocation() {
