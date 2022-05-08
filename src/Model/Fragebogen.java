@@ -51,4 +51,30 @@ public class Fragebogen {
         this.correctAnswers = correctAnswers;
     }
 
+    public boolean addFrage(Frage frage) {
+        for(Frage f: this.l)
+            if(f.getId() == frage.getId()) // die frage existiert schon
+                return false;
+        this.l.add(frage);
+        return true;
+    }
+
+    public void updateFrage(int id, Frage newFrage) {
+        for(int i = 0; i < this.l.size(); i++)
+            if(this.l.get(i).getId() == id) {
+                this.l.set(i, newFrage);
+                break;
+            }
+
+        this.l.add(newFrage);
+    }
+
+    public boolean removeFrage(int id) {
+        for(int i = 0; i < this.l.size(); i++)
+            if(this.l.get(i).getId() == id) {
+                this.l.remove(i);
+                return true;
+            }
+        return false;
+    }
 }
