@@ -14,9 +14,21 @@ public class Frage {
 
     /* Constructor */
     public Frage() {
+        this.question = "";
         this.imageLocation = "";
         this.answers = new ArrayList<>();
         this.id = 0;
+    }
+
+    public Frage(int id, String question) {
+        this.imageLocation = "";
+        this.answers = new ArrayList<>();
+        this.id = id;
+        this.question = question;
+    }
+
+    public void addAnswer(Answer ans) {
+        this.answers.add(ans);
     }
 
     public void setId(int newId)  {
