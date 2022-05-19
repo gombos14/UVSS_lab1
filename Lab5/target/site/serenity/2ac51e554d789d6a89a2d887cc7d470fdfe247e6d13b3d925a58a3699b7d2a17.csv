@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Search by keyword story","Search existing book","SUCCESS","2022-05-19T11:18:50.4076318+03:00[Europe/Bucharest]","0.0","3.53"
+"Search by keyword story","Search inexisting book","SUCCESS","2022-05-19T11:19:18.8381319+03:00[Europe/Bucharest]","0.0","2.27"
+"Search by keyword story","Test login successful","SUCCESS","2022-05-19T11:19:21.1469126+03:00[Europe/Bucharest]","0.0","2.54"

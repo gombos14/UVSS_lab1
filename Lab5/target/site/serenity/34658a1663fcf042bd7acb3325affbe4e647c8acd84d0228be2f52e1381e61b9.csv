@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Search by keyword story","Test login failed","SUCCESS","2022-05-19T11:18:37.6076123+03:00[Europe/Bucharest]","0.0","12.66"
+"Search by keyword story","Test change password successful","SUCCESS","2022-05-19T11:18:53.9775604+03:00[Europe/Bucharest]","0.0","12.77"
+"Search by keyword story","Test change password failed","SUCCESS","2022-05-19T11:19:06.7961635+03:00[Europe/Bucharest]","0.0","11.99"
